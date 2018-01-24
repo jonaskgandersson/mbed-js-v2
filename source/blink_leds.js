@@ -13,10 +13,11 @@
  * limitations under the License.
  */
 
-var blink = require('./blink_leds');
+var led = DigitalOut(LED1);
 
-setInterval(function() {
-	blink();
-}, 1000);
+var blink = function() {
+	led.write(led.read() ? 0 : 1);
+	print("[JERRYSCRIPT] Blink! LED is now " + led.read());
+};
 
-
+module.exports = blink;
